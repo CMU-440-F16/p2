@@ -155,13 +155,13 @@ func main() {
 		case PostTribble:
 			tribVal := userNum + tribIndex*numTargets
 			msg := fmt.Sprintf("%d;%s", tribVal, *clientId)
-			status, err := client.PostTribble(user, msg)
+			reply, err := client.PostTribble(user, msg)
 			if err != nil {
 				LOGE.Fatalf("FAIL: PostTribble returned error '%s'\n", err)
 			}
-			if status == 0 || status == tribrpc.NoSuchUser {
+			if reply.Status == 0 || reply.Status == tribrpc.NoSuchUser {
 				LOGE.Fatalf("FAIL: PostTribble returned error status '%s'\n",
-					statusMap[status])
+					statusMap[reply.Status])
 			}
 			tribIndex++
 		case GetTribblesBySubscription:
