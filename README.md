@@ -101,8 +101,8 @@ The `srunner` (`StorageServer`-runner) program creates and runs an instance of y
 
 # Start the master on port 9009 and run two additional slaves.
 ./srunner -port=9009 -N=3
-./srunner -master="localhost:9009"
-./srunner -master="localhost:9009"
+./srunner -port=9010 -master="localhost:9009"
+./srunner -port=9011 -master="localhost:9009"
 ```
 
 Note that in the above example you do not need to specify a port for your slave storage servers.
